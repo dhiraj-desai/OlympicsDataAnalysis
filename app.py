@@ -22,6 +22,7 @@ user_menu = st.sidebar.radio(
 )
 #st.dataframe(df)
 
+# Medal Tally module
 if user_menu == 'Medal Tally':
     st.sidebar.header("Medal Tally")
     years, country = helper.country_year_list(df)

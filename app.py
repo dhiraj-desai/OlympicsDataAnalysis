@@ -153,6 +153,16 @@ if user_menu == 'Athlete wise Analysis':
     st.title("Distribution of Age wrt Sports(Gold Medalist)")
     st.plotly_chart(fig)
 
+
+    for sport in famous_sports:
+        temp_df = athlete_df[athlete_df['Sport'] == sport]
+        x.append(temp_df[temp_df['Medal'] == 'Silver']['Age'].dropna())
+        name.append(sport)
+
+    figS = ff.create_distplot(x, name, show_hist=False, show_rug=False)
+    st.title("Distribution of Age wrt Sports(Silver Medalist)")
+    st.plotly_chart(figS)
+
     st.title("Men vs Women Participation Over The Years")
     final = helper.men_vs_women(df)
     fig = px.line(final, x='Year', y=['Male', 'Female'])
